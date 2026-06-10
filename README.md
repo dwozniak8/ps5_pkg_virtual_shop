@@ -117,6 +117,47 @@ The first scan may take some time if you have a large collection — subsequent 
 
 ---
 
+## 🐳 Run with Docker (ENV-based paths)
+
+You can run the server in a container and configure PKG categories using environment variables.
+
+### 1️⃣ Build image
+
+```bash
+docker build -t ps5-pkg-shop .
+```
+
+### 2️⃣ Run container
+
+```bash
+docker run --rm -p 5000:5000 \
+  -e APP_PORT=5000 \
+  -e SHOP_TITLE="My PS5 Library" \
+  -e SCAN_ON_STARTUP=true \
+  -e PKG_PATH_GAMES=/data/games \
+  -e PKG_PATH_APPS=/data/apps \
+  -v /absolute/path/to/games:/data/games:ro \
+  -v /absolute/path/to/apps:/data/apps:ro \
+  ps5-pkg-shop
+```
+
+### 3️⃣ Environment variables
+
+- `APP_PORT`: HTTP port used by the app inside the container (default: `5000`).
+- `SHOP_TITLE`: Title shown in the web UI.
+- `SCAN_ON_STARTUP`: `true/false` to enable automatic scan on startup.
+- `PKG_PATH_*`: Define categories and internal container paths.
+  - Example: `PKG_PATH_GAMES=/data/games` creates category `games`.
+  - Example: `PKG_PATH_UPDATES=/data/updates` creates category `updates`.
+
+### 4️⃣ Notes
+
+- In `zsh`, each continued line must end with `\`.
+- Replace `/absolute/path/to/...` with real host paths.
+- Open from PS5 browser: `http://<YOUR_PC_IP>:5000`.
+
+---
+
 ## 🕹️ Usage
 
 ### 🔧 Find your Computer’s IP Address
