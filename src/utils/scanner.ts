@@ -255,7 +255,7 @@ export function performFullScan(): string[] {
     const hasRootPkg = findPkgFiles(FILES_FOLDER, false).length > 0;
     if (hasRootPkg || categoryDirs.length === 0) {
       targets.push({
-        categoryName: "files",
+        categoryName: "./files",
         folderPath: FILES_FOLDER,
         recursive: categoryDirs.length === 0,
       });
