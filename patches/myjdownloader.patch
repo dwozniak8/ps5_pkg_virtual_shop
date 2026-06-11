@@ -1,0 +1,15 @@
+diff --git a/dist/namespaces/DownloadsV2.d.ts b/dist/namespaces/DownloadsV2.d.ts
+index 7d6f3c699f70ae599d079823b4014621fba3aa17..3e19e7c7ffd29bd09c0f2afd72e13aba8d119c63 100644
+--- a/dist/namespaces/DownloadsV2.d.ts
++++ b/dist/namespaces/DownloadsV2.d.ts
+@@ -4,8 +4,8 @@ export declare class DownloadsV2 {
+     constructor(callAction: (action: string, deviceId: string, params: any) => Promise<any>);
+     private defaultLinkQueryOptions;
+     private defaultPackageQueryOptions;
+-    queryLinks(deviceId: string, options?: DownloadLinkQueryOptions): Promise<DownloadLinkInfo[]>;
+-    queryPackages(deviceId: string, packageUUIDs?: string[], options?: DownloadPackageQueryOptions): Promise<DownloadPackageInfo[]>;
++    queryLinks(deviceId: string, options?: DownloadLinkQueryOptions): Promise<{data:DownloadLinkInfo[]}>;
++    queryPackages(deviceId: string, packageUUIDs?: string[], options?: DownloadPackageQueryOptions): Promise<{data:DownloadPackageInfo[]}>;
+     removeLinks(deviceId: string, linkIds: string[]): Promise<void>;
+     removePackages(deviceId: string, packageIds: string[]): Promise<void>;
+     start(deviceId: string, linkIds?: string[]): Promise<void>;
